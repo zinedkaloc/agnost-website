@@ -2,184 +2,55 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { motion } from "framer-motion"
 import { Copy } from "lucide-react"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
 
 import { siteConfig } from "@/config/site"
 import { Button, buttonVariants } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
-import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 
-const formSchema = z.object({
-  email: z
-    .string({
-      required_error: "Please select an email to display.",
-    })
-    .email(),
-})
-
-export default function IndexPage() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-    },
-  })
-
-  // 2. Define a submit handler.
-  async function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(data)
-
-    /*     toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    }) */
-    let response = await fetch(
-      "https://c4-na.altogic.com/e:6474a0b6b19ad9247245c34d/lead",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
-    if (response.ok) {
-      toast({
-        title: "Thank you for your interest!",
-        description: (
-          <p className="mt-2">
-            We will contact you shortly to schedule a demo.
-          </p>
-        ),
-      })
-    } else {
-      toast({
-        title: "Something went wrong.",
-        description: (
-          <p className="mt-2">
-            Please try again later or contact us at{" "}
-            <a href="mailto:info@altogic.com">
-              <span className="text-primary">
-                <strong>
-                  <span className="underline">info@altogic.com</span>
-                </strong>
-              </span>
-            </a>
-          </p>
-        ),
-      })
-    }
-  }
-
+export default function ContactPage() {
   return (
     <>
-      <motion.div
-        className="space-y-6  pt-6 md:pb-12 md:pt-10 lg:py-64"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <section className="">
-          <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-            <Link
-              href={siteConfig.links.twitter}
-              className="inline-flex items-center rounded-xl bg-muted px-4 py-2 text-sm font-medium"
-            >
-              <Icons.gitHub className="h-5 w-5" />
-              <Separator className="mx-2 h-4" orientation="vertical" />
-              <span className="font-medium"></span>
-              kubectl apply -f https://k8slens.dev/install{" "}
-              <Separator className="mx-2 h-4" orientation="vertical" />
-              <Copy className="ml-1 h-4 w-4" />
-            </Link>
-            <motion.h1
-              className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Open-source Kubernetes
-              <br className="hidden sm:inline" />
-              Development Environment
-            </motion.h1>
-            <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"></h1>
+      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
+          <Link
+            href={siteConfig.links.twitter}
+            className="inline-flex items-center rounded-xl bg-muted px-4 py-2 text-sm font-medium"
+          >
+            <Icons.gitHub className="h-5 w-5" />
+            <Separator className="mx-2 h-4" orientation="vertical" />
+            <span className="font-medium"></span>
+            kubectl apply -f https://k8slens.dev/install
+            <Separator className="mx-2 h-4" orientation="vertical" />
+            <Copy className="ml-1 h-4 w-4" />
+          </Link>
+          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
+            Open-source Kubernetes
+            <br className="hidden sm:inline" />
+            Development Environment
+          </h1>
+          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"></h1>
+          <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
+            Create a Powerful and Scalable Development Environment. <br />{" "}
+            Efficiently build robust applications using Kubernetes. Free. Open
+            Source.
+          </p>
 
-            <motion.p
-              className="max-w-[95%] text-lg text-muted-foreground sm:text-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              Powerful and Scalable Application Development Environment running
-              in a Kubernetes Clusters. <br /> Efficiently build robust Node.js
-              Express applications.
-              <br />{" "}
-              <span className="text-primary-500 text-md">
-                {" "}
-                <strong>Forever free. 100% Open Source.</strong>
-              </span>
-            </motion.p>
-
-            <div className="space-x-4">
-              <div className="flex w-full max-w-md items-center space-x-2">
-                <Form {...form}>
-                  <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="flex flex-row items-center space-x-4 align-middle"
-                  >
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input placeholder="Email" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <Button
-                      type="submit"
-                      className={buttonVariants({ variant: "outline" })}
-                    >
-                      Get Notified
-                    </Button>
-                  </form>
-                </Form>
-              </div>
+          <div className="space-x-4">
+            <div className="flex w-full max-w-sm items-center space-x-2">
+              <Input type="email" placeholder="Email" />
+              <Button
+                type="submit"
+                className={buttonVariants({ size: "default" })}
+              >
+                Subscribe
+              </Button>
             </div>
           </div>
-          {/*  <div className="mx-auto flex flex-col items-center space-y-4 ">
+        </div>
+        {/*  <div className="mx-auto flex flex-col items-center space-y-4 ">
           <Image
             src="/demob.png"
             alt="demo"
@@ -188,20 +59,19 @@ export default function IndexPage() {
             className="overflow-hidden rounded-lg border border-transparent bg-slate-50 text-center shadow-xl dark:border-slate-700 dark:bg-transparent sm:flex-row sm:items-stretch sm:space-x-4 sm:space-y-0 sm:rounded-3xl"
           />
         </div> */}
-        </section>
-      </motion.div>
+      </section>
       <section
         id="features"
         className="container max-w-full space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            All-in-one Backend Development
+            Features
           </h2>
-          <p className="max-w-[90%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Application server, database, authentication, queues, cache,
-            cronjobs, realtime — it&apos;s all here. Agnost gives developers the
-            technologies to build scalable & secure backend apps in minutes.
+          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+            This project is an experiment to see how a modern app, with features
+            like auth, subscriptions, API routes, and static pages would work in
+            Next.js 13 app dir.
           </p>
         </div>
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-4">
@@ -271,10 +141,11 @@ export default function IndexPage() {
                   d="M19.99 4c0-1.1-.89-2-1.99-2h-7.17c-.53 0-1.04.21-1.42.59L4.59 7.41C4.21 7.79 4 8.3 4 8.83V20c0 1.1.9 2 2 2h12.01c1.1 0 1.99-.9 1.99-2l-.01-16zM8 19c-.55 0-1-.45-1-1s.45-1 1-1s1 .45 1 1s-.45 1-1 1zm8 0c-.55 0-1-.45-1-1s.45-1 1-1s1 .45 1 1s-.45 1-1 1zm-8-4c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1s1 .45 1 1v2c0 .55-.45 1-1 1zm4 4c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1s1 .45 1 1v2c0 .55-.45 1-1 1zm0-6c-.55 0-1-.45-1-1s.45-1 1-1s1 .45 1 1s-.45 1-1 1zm4 2c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1s1 .45 1 1v2c0 .55-.45 1-1 1z"
                 />
               </svg>
+
               <div className="space-y-2">
                 <h3 className="font-bold">Cache</h3>
                 <p className="text-sm text-muted-foreground">
-                  Support for Redis speed data access.
+                  Support for Redis and Memcached.
                 </p>
               </div>
             </div>
@@ -379,7 +250,7 @@ export default function IndexPage() {
               <div className="space-y-2">
                 <h3 className="font-bold">Cronjobs</h3>
                 <p className="text-sm text-muted-foreground">
-                  Schedule jobs to run at specific times or intervals.
+                  Schedule tasks to run at specific times or intervals.
                 </p>
               </div>
             </div>
@@ -401,7 +272,7 @@ export default function IndexPage() {
               <div className="space-y-2">
                 <h3 className="font-bold">Security</h3>
                 <p className="text-sm text-muted-foreground">
-                  API keys, Rate limiters, Domain/IP white-listing.
+                  Protect your application with robust security.
                 </p>
               </div>
             </div>
@@ -415,25 +286,7 @@ export default function IndexPage() {
           </p>
         </div>
       </section>
-
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
-        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-            Realtime Application Development
-            <br className="hidden sm:inline" />
-          </h1>
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"></h1>
-          <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Near-realtime low-code development platform for Express routes and
-            middlewares. Whatever changes you made in your code deployed to your
-            application servers in seconds. Export your application in a
-            standardized format and import it at any other Agnost Kubernetes
-            cluster.
-          </p>
-        </div>
-      </section>
-
-      <section className="space-y-6 bg-slate-50 py-8 pt-6 dark:bg-transparent md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
             Fully-customizable Development
@@ -446,9 +299,9 @@ export default function IndexPage() {
             message queues. Cronjobs. Realtime. All in one place.
           </p>
 
-          <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-4">
+          <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[200px] flex-col items-center justify-between rounded-md p-6">
+              <div className="flex h-[180px] flex-col items-center justify-between rounded-md p-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="256"
@@ -466,21 +319,59 @@ export default function IndexPage() {
                   />
                 </svg>
                 <div className="space-y-2">
-                  <h3 className="text-sm font-bold">Amazon Web Services</h3>
+                  <h3 className="font-bold">Amazon Web Services</h3>
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes deployments to AWS EKS
+                    Deploy your kubernetes deployments to AWS
                   </p>
                 </div>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[200px] flex-col items-center justify-between rounded-md p-6">
+              <div className="flex h-[180px] flex-col items-center justify-between rounded-md p-6">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="256"
+                  height="256"
+                  viewBox="0 0 256 256"
+                  className="h-12 w-12 fill-current"
+                >
+                  <g fill="none">
+                    <rect width="256" height="256" />
+                    <path
+                      fill="#EA4335"
+                      d="m161.009 92.39l17.385-17.386l1.159-7.32c-31.68-28.807-82.04-25.54-110.6 6.816c-7.932 8.986-13.817 20.19-16.955 31.76l6.226-.878l34.77-5.733l2.684-2.745c15.466-16.986 41.617-19.272 59.475-4.82l5.856.305Z"
+                    />
+                    <path
+                      fill="#4285F4"
+                      d="M203.16 105.749a78.318 78.318 0 0 0-23.607-38.064l-24.4 24.4a43.37 43.37 0 0 1 15.921 34.404v4.331c11.993 0 21.716 9.722 21.716 21.715c0 11.994-9.723 21.473-21.716 21.473h-43.493l-4.27 4.636v26.047l4.27 4.087h43.493c31.195.243 56.681-24.605 56.924-55.8a56.483 56.483 0 0 0-24.838-47.229Z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M84.149 208.778h43.432v-34.77H84.149a21.312 21.312 0 0 1-8.906-1.952l-6.161 1.891l-17.507 17.385l-1.525 5.917c9.818 7.413 21.796 11.582 34.099 11.529Z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M84.149 95.989C52.953 96.175 27.815 121.615 28 152.81a56.486 56.486 0 0 0 22.049 44.438l25.193-25.193c-10.93-4.938-15.787-17.802-10.849-28.731c4.938-10.93 17.802-15.787 28.73-10.85a21.718 21.718 0 0 1 10.85 10.85l25.193-25.193a56.421 56.421 0 0 0-45.018-22.143Z"
+                    />
+                  </g>
+                </svg>
+                <div className="space-y-2">
+                  <h3 className="font-bold">Google Cloud Platform</h3>
+                  <p className="text-sm">
+                    Deploy your kubernetes deployments to GCP
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+              <div className="flex h-[180px] flex-col items-center justify-between rounded-md p-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="256"
                   height="256"
                   viewBox="0 0 128 128"
-                  className="h-10 w-10 fill-current"
+                  className="h-12 w-12 fill-current"
                 >
                   <defs>
                     <linearGradient
@@ -541,69 +432,10 @@ export default function IndexPage() {
                   />
                 </svg>
                 <div className="space-y-2">
-                  <h3 className="text-sm font-bold">Microsoft Azure</h3>
+                  <h3 className="font-bold">Microsoft Azure</h3>
 
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes deployments to Azure AKS
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[200px] flex-col items-center justify-between rounded-md p-6">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="256"
-                  height="256"
-                  viewBox="0 0 256 256"
-                  className="h-12 w-12 fill-current"
-                >
-                  <g fill="none">
-                    <rect width="256" height="256" />
-                    <path
-                      fill="#EA4335"
-                      d="m161.009 92.39l17.385-17.386l1.159-7.32c-31.68-28.807-82.04-25.54-110.6 6.816c-7.932 8.986-13.817 20.19-16.955 31.76l6.226-.878l34.77-5.733l2.684-2.745c15.466-16.986 41.617-19.272 59.475-4.82l5.856.305Z"
-                    />
-                    <path
-                      fill="#4285F4"
-                      d="M203.16 105.749a78.318 78.318 0 0 0-23.607-38.064l-24.4 24.4a43.37 43.37 0 0 1 15.921 34.404v4.331c11.993 0 21.716 9.722 21.716 21.715c0 11.994-9.723 21.473-21.716 21.473h-43.493l-4.27 4.636v26.047l4.27 4.087h43.493c31.195.243 56.681-24.605 56.924-55.8a56.483 56.483 0 0 0-24.838-47.229Z"
-                    />
-                    <path
-                      fill="#34A853"
-                      d="M84.149 208.778h43.432v-34.77H84.149a21.312 21.312 0 0 1-8.906-1.952l-6.161 1.891l-17.507 17.385l-1.525 5.917c9.818 7.413 21.796 11.582 34.099 11.529Z"
-                    />
-                    <path
-                      fill="#FBBC05"
-                      d="M84.149 95.989C52.953 96.175 27.815 121.615 28 152.81a56.486 56.486 0 0 0 22.049 44.438l25.193-25.193c-10.93-4.938-15.787-17.802-10.849-28.731c4.938-10.93 17.802-15.787 28.73-10.85a21.718 21.718 0 0 1 10.85 10.85l25.193-25.193a56.421 56.421 0 0 0-45.018-22.143Z"
-                    />
-                  </g>
-                </svg>
-                <div className="space-y-2">
-                  <h3 className="text-sm font-bold">Google Cloud Platform</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes deployments to GCP GKE
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-              <div className="flex h-[200px] flex-col items-center justify-between rounded-md p-6">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="h-12 w-12 fill-current"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"
-                  />
-                </svg>
-                <div className="space-y-2">
-                  <h3 className="text-sm font-bold">On-Premise</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes deployments to your own cluster.
+                    Deploy your kubernetes deployments to Azure
                   </p>
                 </div>
               </div>
@@ -611,10 +443,13 @@ export default function IndexPage() {
           </div>
         </div>
       </section>
-      <section id="features" className="space-y-6 py-8 md:py-12 lg:py-24">
+      <section
+        id="features"
+        className=" space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
+      >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-            Coming soon
+            Coming soon!
           </h1>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
             If you want to be an early adopter, or maintainer, join the mailing
@@ -625,31 +460,13 @@ export default function IndexPage() {
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <div className="space-x-4">
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="flex flex-row items-center space-x-4 align-middle"
-                >
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="hello@developer.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button
-                    type="submit"
-                    className={buttonVariants({ size: "default" })}
-                  >
-                    Subscribe
-                  </Button>
-                </form>
-              </Form>
+              <Input type="email" placeholder="Email" />
+              <Button
+                type="submit"
+                className={buttonVariants({ size: "default" })}
+              >
+                Subscribe
+              </Button>
             </div>
           </div>
         </div>

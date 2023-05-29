@@ -4,6 +4,8 @@ import { Metadata } from "next"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import { Toaster } from "@/components/ui/toaster"
+import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -13,6 +15,14 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
+  keywords: ["Backend", "BaaS", "Kubernetes", "Serverless", "Cloud"],
+  authors: [
+    {
+      name: "zinedkaloc",
+      url: "https://agnost.io",
+    },
+  ],
+  creator: "zinedkaloc",
   description: siteConfig.description,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -23,6 +33,22 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [`${siteConfig.url}/og.jpg`],
+    creator: "@shadcn",
+  },
+  manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
 interface RootLayoutProps {
@@ -44,8 +70,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
               <div className="flex-1">{children}</div>
+              <Toaster />
+              <SiteFooter />
             </div>
-            <TailwindIndicator />
+            {/* <TailwindIndicator /> */}
           </ThemeProvider>
         </body>
       </html>

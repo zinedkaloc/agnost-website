@@ -1,18 +1,37 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
+  name: "Agnost",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Your kubernetes based cloud native application platform. Agnost is a platform that helps you to deploy your applications on kubernetes with ease.",
+  url: "https://agnost.io",
+
   mainNav: [
-    {
+    /*     {
       title: "Home",
       href: "/",
+    }, */
+    /*     {
+      title: "Documentation",
+      href: "/docs",
+    }, */
+    /*     {
+      title: "Examples",
+      href: "/examples",
+    }, */
+    {
+      title: "Feature Requests",
+      href: "https://agnost.canny.io/feature-requests",
     },
+    /*     {
+      title: "Contact",
+      href: "/contact",
+    }, */
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    twitter: "https://twitter.com/agnostdev",
+    github: "https://github.com/cloud-agnost",
+    docs: "https://agnost.io/docs",
+    website: "https://www.altogic.com",
   },
 }
