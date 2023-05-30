@@ -103,12 +103,12 @@ export default function IndexPage() {
   return (
     <>
       <motion.div
-        className="space-y-6  pt-6 md:pb-12 md:pt-10 lg:py-64"
+        className="space-y-6 py-8 md:pb-12 md:pt-10 lg:py-48"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <section className="">
+        <section className="sm:py-28">
           <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
             <Link
               href={siteConfig.links.twitter}
@@ -127,8 +127,7 @@ export default function IndexPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Open-source Kubernetes
-              <br className="hidden sm:inline" />
+              Open-source Kubernetes <br className="hidden sm:inline" />
               Development Environment
             </motion.h1>
             <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"></h1>
@@ -142,9 +141,8 @@ export default function IndexPage() {
               Powerful and Scalable Application Development Environment running
               in a Kubernetes Clusters. <br /> Efficiently build robust Node.js
               Express applications.
-              <br />{" "}
+              <br />
               <span className="text-primary-500 text-md">
-                {" "}
                 <strong>Forever free. 100% Open Source.</strong>
               </span>
             </motion.p>
@@ -468,7 +466,7 @@ export default function IndexPage() {
                 <div className="space-y-2">
                   <h3 className="text-sm font-bold">Amazon Web Services</h3>
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes deployments to AWS EKS
+                    Deploy your kubernetes clusters to AWS EKS
                   </p>
                 </div>
               </div>
@@ -544,7 +542,7 @@ export default function IndexPage() {
                   <h3 className="text-sm font-bold">Microsoft Azure</h3>
 
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes deployments to Azure AKS
+                    Deploy your kubernetes clusters to Azure AKS
                   </p>
                 </div>
               </div>
@@ -581,7 +579,7 @@ export default function IndexPage() {
                 <div className="space-y-2">
                   <h3 className="text-sm font-bold">Google Cloud Platform</h3>
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes deployments to GCP GKE
+                    Deploy your kubernetes clusters to GCP GKE
                   </p>
                 </div>
               </div>
@@ -603,7 +601,7 @@ export default function IndexPage() {
                 <div className="space-y-2">
                   <h3 className="text-sm font-bold">On-Premise</h3>
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes deployments to your own cluster.
+                    Deploy your kubernetes clusters to your own
                   </p>
                 </div>
               </div>
