@@ -103,24 +103,28 @@ export default function IndexPage() {
   return (
     <>
       <motion.div
-        className="space-y-6 py-8 md:pb-12 md:pt-10 lg:py-48"
+        className="space-y-6 py-8 md:pb-12 md:pt-4 lg:py-48"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <section className="sm:py-28">
+        <section className="sm:py-8">
           <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-            <Link
-              href={siteConfig.links.twitter}
-              className="inline-flex items-center rounded-xl bg-muted px-4 py-2 text-sm font-medium"
-            >
-              <Icons.gitHub className="h-5 w-5" />
-              <Separator className="mx-2 h-4" orientation="vertical" />
-              <span className="font-medium"></span>
-              kubectl apply -f https://k8slens.dev/install{" "}
-              <Separator className="mx-2 h-4" orientation="vertical" />
-              <Copy className="ml-1 h-4 w-4" />
-            </Link>
+            <div className="flex justify-center overflow-hidden text-center dark:border-slate-700 dark:bg-transparent sm:flex-row sm:items-stretch sm:space-x-4 sm:space-y-0 sm:rounded-3xl">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                src="/hero.webm"
+                width="50%"
+                height="50%"
+              >
+                <source src="/hero.webm" type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
             <motion.h1
               className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl"
               initial={{ opacity: 0, y: 20 }}
@@ -142,9 +146,6 @@ export default function IndexPage() {
               in a Kubernetes Clusters. <br /> Efficiently build robust Node.js
               Express applications.
               <br />
-              <span className="text-primary-500 text-md">
-                <strong>Forever free. 100% Open Source.</strong>
-              </span>
             </motion.p>
 
             <div className="space-x-4">
@@ -177,15 +178,15 @@ export default function IndexPage() {
               </div>
             </div>
           </div>
-          {/*  <div className="mx-auto flex flex-col items-center space-y-4 ">
-          <Image
-            src="/demob.png"
-            alt="demo"
-            height={800}
-            width={1400}
-            className="overflow-hidden rounded-lg border border-transparent bg-slate-50 text-center shadow-xl dark:border-slate-700 dark:bg-transparent sm:flex-row sm:items-stretch sm:space-x-4 sm:space-y-0 sm:rounded-3xl"
-          />
-        </div> */}
+          <div className="mx-auto flex flex-col items-center space-y-4 ">
+            {/* <Image
+              src="/hero.webm"
+              alt="demo"
+              height={800}
+              width={1400}
+              className="overflow-hidden rounded-lg border border-transparent bg-slate-50 text-center shadow-xl dark:border-slate-700 dark:bg-transparent sm:flex-row sm:items-stretch sm:space-x-4 sm:space-y-0 sm:rounded-3xl"
+            /> */}
+          </div>
         </section>
       </motion.div>
       <section
@@ -377,7 +378,7 @@ export default function IndexPage() {
               <div className="space-y-2">
                 <h3 className="font-bold">Cronjobs</h3>
                 <p className="text-sm text-muted-foreground">
-                  Schedule jobs to run at specific times or intervals.
+                  Scheduled jobs that run at specific times or intervals.
                 </p>
               </div>
             </div>
@@ -408,8 +409,8 @@ export default function IndexPage() {
         <div className="mx-auto text-center md:max-w-[58rem]">
           <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
             Agnost also includes a low-code endpoint designer that allows you to
-            create and deploy your APIs. You can also create and manage your own
-            custom endpoints.
+            create and deploy your APIs. You can create and manage your own
+            custom express routes and middlewares.
           </p>
         </div>
       </section>
@@ -422,7 +423,7 @@ export default function IndexPage() {
           </h1>
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"></h1>
           <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Near-realtime low-code development platform for Express routes and
+            Near-realtime app development platform for Express routes and
             middlewares. Whatever changes you made in your code deployed to your
             application servers in seconds. Export your application in a
             standardized format and import it at any other Agnost Kubernetes
@@ -466,7 +467,7 @@ export default function IndexPage() {
                 <div className="space-y-2">
                   <h3 className="text-sm font-bold">Amazon Web Services</h3>
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes clusters to AWS EKS
+                    Deploy your apps to AWS EKS
                   </p>
                 </div>
               </div>
@@ -542,7 +543,7 @@ export default function IndexPage() {
                   <h3 className="text-sm font-bold">Microsoft Azure</h3>
 
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes clusters to Azure AKS
+                    Deploy your apps to Azure AKS
                   </p>
                 </div>
               </div>
@@ -579,7 +580,7 @@ export default function IndexPage() {
                 <div className="space-y-2">
                   <h3 className="text-sm font-bold">Google Cloud Platform</h3>
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes clusters to GCP GKE
+                    Deploy your apps to GCP GKE
                   </p>
                 </div>
               </div>
@@ -601,7 +602,7 @@ export default function IndexPage() {
                 <div className="space-y-2">
                   <h3 className="text-sm font-bold">On-Premise</h3>
                   <p className="text-sm text-muted-foreground">
-                    Deploy your kubernetes clusters to your own
+                    Deploy your apps to your own on-prem Kubernetes clusters
                   </p>
                 </div>
               </div>
