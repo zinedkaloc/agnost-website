@@ -50,7 +50,7 @@ export function SiteHeader() {
               </div>
             </Link>
             {/* TODO: Activate Dark Mode */}
-            {/* <ThemeToggle /> */}
+            <ThemeToggle />
           </nav>
         </div>
       </div>
