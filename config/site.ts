@@ -20,7 +20,7 @@ export const siteConfig = {
       href: "/examples",
     }, */
     {
-      title: "Feature Requests",
+      title: "⚡️ Feature Requests",
       href: "https://github.com/orgs/cloud-agnost/discussions",
     },
     /*     {

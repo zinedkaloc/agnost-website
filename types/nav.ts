@@ -1,6 +1,7 @@
-export interface NavItem {
+export type NavItem = {
   title: string
-  href?: string
+  href: string
   disabled?: boolean
-  external?: boolean
 }
+
+export type MainNavItem = NavItem
