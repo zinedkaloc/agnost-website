@@ -12,6 +12,13 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    rowtainer: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+
     extend: {
       colors: {
         border: "hsl(var(--border))",

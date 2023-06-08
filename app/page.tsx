@@ -103,89 +103,87 @@ export default function IndexPage() {
   return (
     <>
       <motion.div
-        className="space-y-6 py-8 md:pb-12 md:pt-4 lg:py-48"
+        className="space-y-6 py-12 md:pb-12 md:pt-4 lg:py-12"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <section className="sm:py-8">
-          <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-            <div className="flex justify-center overflow-hidden text-center dark:border-slate-700 dark:bg-transparent sm:flex-row sm:items-stretch sm:space-x-4 sm:space-y-0 sm:rounded-3xl">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                src="/hero.webm"
-                width="50%"
-                height="50%"
-              >
-                <source src="/hero.webm" type="video/webm" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+        <section className="sm:py-32 lg:h-full">
+          <div className="container flex flex-col items-center justify-center gap-4 text-center">
+            <div className="flex flex-col-reverse justify-center overflow-hidden text-center dark:border-slate-700 dark:bg-transparent sm:flex-row sm:items-stretch sm:space-x-4 sm:space-y-0 sm:rounded-3xl">
+              <div className="flex flex-col justify-center space-y-4 py-2 sm:w-1/2 sm:items-start">
+                <motion.h1
+                  className="py-2 text-4xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-left lg:text-6xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  Open-source Kubernetes <br className="hidden sm:inline" />
+                  Development Platform
+                </motion.h1>
 
-            <motion.h1
-              className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Open-source Kubernetes <br className="hidden sm:inline" />
-              Development Environment
-            </motion.h1>
-            <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"></h1>
-
-            <motion.p
-              className="max-w-[95%] text-lg text-muted-foreground sm:text-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              Powerful and Scalable Application Development Environment running
-              in a Kubernetes Clusters. <br /> Efficiently build robust Node.js
-              Express applications.
-              <br />
-            </motion.p>
-
-            <div className="space-x-4">
-              <div className="flex w-full max-w-md items-center space-x-2">
-                <Form {...form}>
-                  <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="flex flex-row items-center space-x-4 align-middle"
-                  >
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input placeholder="Email" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <Button
-                      type="submit"
-                      className={buttonVariants({ variant: "outline" })}
-                    >
-                      Get Notified
-                    </Button>
-                  </form>
-                </Form>
+                <motion.p
+                  className="max-w-[95%] text-xl text-muted-foreground sm:text-xl lg:text-left"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                >
+                  Powerful and Scalable Application Development Environment
+                  running in a Kubernetes Clusters. <br /> Efficiently build
+                  robust Node.js Express applications.
+                  <br />
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.0 }}
+                >
+                  <div className="space-x-4 py-2">
+                    <div className="flex w-full max-w-md flex-col items-center justify-center space-x-2 sm:flex-row sm:items-center sm:justify-center">
+                      <Form {...form}>
+                        <form
+                          onSubmit={form.handleSubmit(onSubmit)}
+                          className="flex flex-row items-center space-x-4 align-middle"
+                        >
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <Input placeholder="Email" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <Button
+                            type="submit"
+                            className={buttonVariants({ variant: "outline" })}
+                          >
+                            Get Notified
+                          </Button>
+                        </form>
+                      </Form>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+              <div className="flex w-full justify-center sm:w-1/2">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  src="/hero.webm"
+                  width="100%"
+                  height="100%"
+                >
+                  <source src="/hero.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
-          </div>
-          <div className="mx-auto flex flex-col items-center space-y-4 ">
-            {/* <Image
-              src="/hero.webm"
-              alt="demo"
-              height={800}
-              width={1400}
-              className="overflow-hidden rounded-lg border border-transparent bg-slate-50 text-center shadow-xl dark:border-slate-700 dark:bg-transparent sm:flex-row sm:items-stretch sm:space-x-4 sm:space-y-0 sm:rounded-3xl"
-            /> */}
           </div>
         </section>
       </motion.div>

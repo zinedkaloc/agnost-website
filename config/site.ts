@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Agnost",
+  name: "Agnost - Open-source Kubernetes Development Platform",
   description:
     "Your kubernetes based cloud native application platform. Agnost is a platform that helps you to deploy your applications on kubernetes with ease.",
   url: "https://agnost.io",
@@ -21,7 +21,7 @@ export const siteConfig = {
     }, */
     {
       title: "Feature Requests",
-      href: "https://agnost.canny.io/feature-requests",
+      href: "https://github.com/orgs/cloud-agnost/discussions",
     },
     /*     {
       title: "Contact",
@@ -29,9 +29,10 @@ export const siteConfig = {
     }, */
   ],
   links: {
-    twitter: "https://twitter.com/agnostdev",
+    twitter: "https://twitter.com/AgnostDev",
     github: "https://github.com/cloud-agnost",
     docs: "https://agnost.io/docs",
     website: "https://www.altogic.com",
+    cloudFlex: "https://github.com/cloud-agnost",
   },
 }

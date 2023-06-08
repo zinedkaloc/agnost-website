@@ -12,23 +12,14 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
           <p className="text-center text-sm leading-loose md:text-left">
             Built by{" "}
             <a
-              href={siteConfig.links.website}
+              href={siteConfig.links.cloudFlex}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              the Altogic
+              CloudFlex
             </a>
-            . Hosted on{" "}
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Github
-            </a>
-            .
+            . All rights reserved.
           </p>
         </div>
       </div>
