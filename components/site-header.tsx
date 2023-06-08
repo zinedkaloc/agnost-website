@@ -49,6 +49,7 @@ export function SiteHeader() {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
+            {/* TODO: Activate Dark Mode */}
             {/* <ThemeToggle /> */}
           </nav>
         </div>
