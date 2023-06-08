@@ -180,6 +180,7 @@ export default function IndexPage() {
                   height="100%"
                 >
                   <source src="/hero.webm" type="video/webm" />
+                  <source src="/hero.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
