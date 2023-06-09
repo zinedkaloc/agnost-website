@@ -151,7 +151,11 @@ export default function IndexPage() {
                             render={({ field }) => (
                               <FormItem>
                                 <FormControl>
-                                  <Input placeholder="Email" {...field} />
+                                  <Input
+                                    className="w-48 sm:w-72"
+                                    placeholder="Email"
+                                    {...field}
+                                  />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -635,7 +639,11 @@ export default function IndexPage() {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input placeholder="hello@developer.com" {...field} />
+                          <Input
+                            className="w-48 sm:w-72"
+                            placeholder="hello@developer.com"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
