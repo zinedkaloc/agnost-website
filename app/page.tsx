@@ -176,10 +176,12 @@ export default function IndexPage() {
                   muted
                   playsInline
                   src="/hero.webm"
+                  poster="/hero.gif"
                   width="100%"
                   height="100%"
                 >
                   <source src="/hero.webm" type="video/webm" />
+                  <source src="/hero.gif" type="image/gif" />
                   <source src="/hero.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
